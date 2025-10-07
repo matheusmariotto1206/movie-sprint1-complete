@@ -227,7 +227,7 @@ Projeto desenvolvido para fins acadêmicos como parte do Challenge FIAP - Oracle
 
 ---
 
-**Desenvolvido por:** | Matheus Mariotto | Felipe anselmo | Felipe Anselmo
+**Desenvolvido por:** | Matheus Mariotto | Felipe Anselmo | João Vinicius
 **Curso:** Análise e Desenvolvimento de Sistemas - FIAP  
 **Disciplina:** Mobile Application Development  
 **Professor:** Fernando Pinéo  
