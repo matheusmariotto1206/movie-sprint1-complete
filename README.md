@@ -6,9 +6,9 @@ Aplicativo mobile desenvolvido em React Native com Expo para gerenciamento de su
 
 | Nome Completo | RM | Responsabilidade |
 |--------------|-----|------------------|
-| MatheusMariotto  | 560276   | Desenvolvimento de navegação e estrutura do projeto |
-| João Vinicius    | RM559369 | Implementação de componentes e AsyncStorage         |
-| Felipe Anselmo   |RM560661  | Estilização das telas e documentação                |
+| MatheusMariotto  | 560276  | Desenvolvimento de navegação e estrutura do projeto |
+| João Vinicius    | 559369  | Implementação de componentes e AsyncStorage         |
+| Felipe Anselmo   | 560661  | Estilização das telas e documentação                |
 
 ## Sobre o Projeto
 
