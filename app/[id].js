@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 
-export default function DetailsScreen({ route }) {
-  const { item } = route.params || {};
+export default function DetailsScreen() {
+  const params = useLocalSearchParams();
+  const item = params.item ? JSON.parse(params.item) : null;
   
   if (!item) {
     return (

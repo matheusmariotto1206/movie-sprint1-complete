@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { View, FlatList, Text, TouchableOpacity, Alert, StyleSheet, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useRouter } from 'expo-router';
 
-export default function FavoritesScreen({ navigation }) {
+export default function FavoritesScreen() {
+  const router = useRouter();
   const [favorites, setFavorites] = useState([]);
 
   const loadFavorites = async () => {
@@ -77,7 +78,10 @@ export default function FavoritesScreen({ navigation }) {
               </View>
               <View style={styles.buttonRow}>
                 <TouchableOpacity 
-                  onPress={() => navigation.navigate('Details', { item })} 
+                  onPress={() => router.push({
+                    pathname: '/details/[id]',
+                    params: { id: item.id, item: JSON.stringify(item) }
+                  })} 
                   style={[styles.button, styles.viewButton]}
                   activeOpacity={0.8}
                 >

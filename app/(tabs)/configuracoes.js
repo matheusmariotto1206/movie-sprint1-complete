@@ -124,7 +124,7 @@ export default function SettingsScreen() {
 
       {saved && (
         <View style={styles.savedContainer}>
-          <Text style={styles.savedTitle}>✓ Última configuração salva:</Text>
+          <Text style={styles.savedTitle}>✅ Última configuração salva:</Text>
           <View style={styles.savedItem}>
             <Text style={styles.savedLabel}>Nome:</Text>
             <Text style={styles.savedValue}>{saved.userName}</Text>
@@ -141,8 +141,6 @@ export default function SettingsScreen() {
           </View>
         </View>
       )}
-
-      <View style={styles.bottomSpacer} />
     </ScrollView>
   );
 }
@@ -167,7 +165,6 @@ const styles = StyleSheet.create({
     color: '#666',
     fontSize: 14,
     marginBottom: 12,
-    lineHeight: 20,
   },
   input: {
     borderWidth: 1,
@@ -182,16 +179,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginTop: 8,
-    marginHorizontal: -4,
   },
   genreChip: {
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
     borderRadius: 20,
     margin: 4,
     backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
   },
   genreChipSelected: {
     backgroundColor: '#2196F3',
@@ -206,8 +201,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   saveButton: {
-    marginHorizontal: 16,
-    marginTop: 8,
+    margin: 16,
     backgroundColor: '#27ae60',
     padding: 16,
     borderRadius: 12,
@@ -224,8 +218,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   savedContainer: {
-    marginHorizontal: 16,
-    marginTop: 16,
+    margin: 16,
+    marginTop: 0,
     padding: 16,
     backgroundColor: '#e8f5e9',
     borderRadius: 12,
@@ -241,7 +235,6 @@ const styles = StyleSheet.create({
   savedItem: {
     flexDirection: 'row',
     marginVertical: 4,
-    flexWrap: 'wrap',
   },
   savedLabel: {
     fontWeight: '600',
@@ -251,8 +244,5 @@ const styles = StyleSheet.create({
   savedValue: {
     color: '#555',
     flex: 1,
-  },
-  bottomSpacer: {
-    height: 30,
   },
 });

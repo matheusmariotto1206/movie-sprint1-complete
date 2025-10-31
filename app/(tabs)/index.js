@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
-import MovieCard from '../components/MovieCard';
+import { useRouter } from 'expo-router';
+import MovieCard from '../../components/MovieCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MOCK_DATA = [
@@ -76,7 +77,8 @@ const MOCK_DATA = [
   },
 ];
 
-export default function SuggestionsScreen({ navigation }) {
+export default function SuggestionsScreen() {
+  const router = useRouter();
   const [movies] = useState(MOCK_DATA);
   const [favorites, setFavorites] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -204,7 +206,10 @@ export default function SuggestionsScreen({ navigation }) {
           <MovieCard 
             item={item} 
             onAdd={() => addFavorite(item)} 
-            onPress={() => navigation.navigate('Details', { item })} 
+            onPress={() => router.push({
+              pathname: '/details/[id]',
+              params: { id: item.id, item: JSON.stringify(item) }
+            })} 
           />
         )}
         contentContainerStyle={styles.listContent}
