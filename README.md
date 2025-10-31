@@ -6,9 +6,9 @@ Aplicativo mobile desenvolvido em React Native com Expo para gerenciamento de su
 
 | Nome Completo | RM | Responsabilidade |
 |--------------|-----|------------------|
-| [Nome do Aluno 1] | [RM] | Desenvolvimento de navegação e estrutura do projeto |
-| [Nome do Aluno 2] | [RM] | Implementação de componentes e AsyncStorage |
-| [Nome do Aluno 3] | [RM] | Estilização das telas e documentação |
+| MatheusMariotto  | 560276  | Desenvolvimento de navegação e estrutura do projeto |
+| João Vinicius    | 559369  | Implementação de componentes e AsyncStorage         |
+| Felipe Anselmo   | 560661  | Estilização das telas e documentação                |
 
 ## Sobre o Projeto
 
@@ -227,7 +227,7 @@ Projeto desenvolvido para fins acadêmicos como parte do Challenge FIAP - Oracle
 
 ---
 
-**Desenvolvido por:** [Nomes dos integrantes]  
+**Desenvolvido por:** | Matheus Mariotto | Felipe Anselmo | João Vinicius
 **Curso:** Análise e Desenvolvimento de Sistemas - FIAP  
 **Disciplina:** Mobile Application Development  
 **Professor:** Fernando Pinéo  
