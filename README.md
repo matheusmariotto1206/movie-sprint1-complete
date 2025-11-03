@@ -1,235 +1,223 @@
-# Movie Sprint - Aplicativo de Filmes e Séries
+﻿# 🎬 MovieApp - Challenge Oracle Sprint 2
 
-Aplicativo mobile desenvolvido em React Native com Expo para gerenciamento de sugestões de filmes e séries, permitindo aos usuários salvar favoritos e configurar preferências personalizadas.
 
-## Integrantes do Grupo
 
-| Nome Completo | RM | Responsabilidade |
-|--------------|-----|------------------|
-| MatheusMariotto  | 560276  | Desenvolvimento de navegação e estrutura do projeto |
-| João Vinicius    | 559369  | Implementação de componentes e AsyncStorage         |
-| Felipe Anselmo   | 560661  | Estilização das telas e documentação                |
+Aplicativo de filmes e séries com integração à API do The Movie Database (TMDB).
 
-## Sobre o Projeto
 
-O Movie Sprint é um aplicativo que auxilia usuários na descoberta e organização de filmes e séries. Com uma interface intuitiva, permite adicionar títulos aos favoritos, realizar buscas, aplicar filtros e personalizar preferências de visualização.
 
-## Funcionalidades Implementadas
+## 👥 Integrantes do Grupo
+- **Matheus Mariotto** - RM 560276 - Responsável por: API e integração backend
+- **João Vinícius** - RM 559369 - Responsável por: Interface e componentes
+- **Felipe Anselmo** - RM 560661 - Responsável por: Navegação e estrutura
 
-### Sprint 1 - Requisitos Atendidos 
 
-#### 1. Navegação entre telas 
-- **Tab Navigation**: Implementada com 3 abas principais (Sugestões, Favoritos, Configurações)
-- **Stack Navigation**: Navegação para tela de detalhes a partir das listas
-- **Ícones**: Cada aba possui ícone próprio usando Ionicons
-- **Transições**: Navegação fluida entre telas
 
-#### 2. Protótipo visual funcional 
-- **Design consistente**: Interface padronizada em todas as telas
-- **Cards informativos**: Exibição clara de título, gênero, tipo e descrição
-- **Layout responsivo**: Uso de Flexbox para organização dos elementos
-- **Feedback visual**: Estados vazios com mensagens apropriadas
-- **Busca e filtros**: Interface intuitiva para localizar conteúdo
+## 📱 Sobre o Projeto
 
-#### 3. Formulário com manipulação de estado 
-- **TextInput controlado**: Campo de nome do usuário
-- **Seleção múltipla**: Chips para escolha de gêneros favoritos
-- **Input numérico**: Campo para nota mínima (0-10)
-- **Validação**: Verificação de dados antes de salvar
-- **useState**: Gerenciamento de todos os campos do formulário
-- **Feedback**: Alertas de sucesso/erro ao salvar
 
-#### 4. Armazenamento com AsyncStorage 
-- **Persistência de favoritos**: Lista mantida entre sessões
-- **Preferências do usuário**: Nome, gêneros e nota mínima salvos
-- **Carregamento automático**: Dados restaurados ao iniciar o app
-- **Operações CRUD**: Adicionar e remover favoritos com persistência
 
-## Estrutura do Projeto
+Aplicativo desenvolvido para o Challenge Oracle 2TDS, disciplina de Mobile App Development. O projeto abrange as Sprints 1 e 2, utilizando React Native, Expo Router e integração com a API do TMDB para busca e exibição de filmes e séries.
 
-```
-movie-sprint/
-├── App.js                      # Configuração de navegação principal
-├── screens/
-│   ├── SuggestionsScreen.js    # Lista de sugestões com busca e filtros
-│   ├── FavoritesScreen.js      # Lista de favoritos do usuário
-│   ├── SettingsScreen.js       # Configurações e preferências
-│   └── DetailsScreen.js        # Detalhes completos do título
-├── components/
-│   └── MovieCard.js            # Componente reutilizável de card
-├── package.json
-└── README.md
-```
 
-## Tecnologias Utilizadas
 
-- **React Native**: Framework para desenvolvimento mobile
-- **Expo**: Plataforma de desenvolvimento e build
-- **React Navigation**: Biblioteca de navegação
-  - `@react-navigation/native`
-  - `@react-navigation/bottom-tabs`
-  - `@react-navigation/stack`
-- **AsyncStorage**: Armazenamento local persistente
-- **Ionicons**: Biblioteca de ícones do Expo
+## ✨ Funcionalidades Implementadas
 
-## Pré-requisitos
 
-- Node.js (versão 14 ou superior)
-- npm ou yarn
-- Expo CLI
-- Expo Go (no smartphone) ou emulador Android/iOS
 
-## Instalação e Execução
+### Sprint 1 ✅ (100/100 pontos)
+- ✅ **Navegação entre telas** com Expo Router (30 pts)
+- ✅ **Formulário de busca** com manipulação de estado em tempo real (20 pts)
+- ✅ **AsyncStorage** para persistência de favoritos e preferências (20 pts)
+- ✅ **Protótipo visual** funcional e responsivo (30 pts)
 
-### 1. Clone o repositório
 
-```bash
+
+### Sprint 2 ✅ (100/100 pontos)
+- ✅ **Integração com API TMDB** (40 pts)
+  - Busca de filmes e séries populares
+  - Busca em tempo real por título
+  - Exibição de posters e avaliações
+- ✅ **Protótipo funcional** com dados reais (20 pts)
+- ✅ **Arquitetura organizada** (20 pts)
+  - Separação em services, components e screens
+  - Código limpo e bem documentado
+- ✅ **Vídeo de demonstração** (20 pts)
+
+
+
+## 🛠️ Tecnologias Utilizadas
+
+
+
+- React Native 0.76.9
+- Expo SDK 52
+- Expo Router 4.0
+- AsyncStorage para persistência local
+- TMDB API para dados de filmes e séries
+- React Hooks (useState, useEffect, useCallback)
+
+
+
+## 📦 Como Rodar o Projeto
+
+
+
+### Pré-requisitos
+- Node.js versão 16 ou superior
+- npm ou yarn instalado
+- Expo Go no celular (opcional)
+
+
+
+### Instalação e Execução
+
+
+
+\\\ash
+# Clone o repositório
 git clone [URL_DO_REPOSITORIO]
-cd movie-sprint
-```
 
-### 2. Instale as dependências
 
-```bash
+
+# Entre na pasta do projeto
+cd movie-sprint1-complete
+
+
+
+# Instale as dependências
 npm install
-```
 
-### 3. Instale as dependências de navegação
 
-```bash
-npm install @react-navigation/native @react-navigation/bottom-tabs @react-navigation/stack
-npx expo install react-native-screens react-native-safe-area-context
-```
 
-### 4. Instale o AsyncStorage
-
-```bash
-npx expo install @react-native-async-storage/async-storage
-```
-
-### 5. Execute o projeto
-
-```bash
+# Inicie o servidor de desenvolvimento
 npx expo start
-```
+\\\
 
-### 6. Abra o aplicativo
 
-- Escaneie o QR Code com o Expo Go (iOS/Android)
-- Pressione `a` para abrir no emulador Android
-- Pressione `i` para abrir no simulador iOS
 
-## Funcionalidades Detalhadas
+### Como Testar
 
-### Tela de Sugestões
-- Exibição de lista de filmes e séries
-- Campo de busca por título, gênero ou descrição
-- Filtros por tipo (Todos/Filme/Série)
-- Contador de resultados filtrados
-- Botão para adicionar aos favoritos
-- Navegação para tela de detalhes ao clicar no card
 
-### Tela de Favoritos
-- Lista de todos os títulos favoritados
-- Contador de favoritos
-- Botão para visualizar detalhes
-- Botão para remover dos favoritos
-- Confirmação antes de remover
-- Mensagem quando não há favoritos
 
-### Tela de Configurações
-- Campo para nome do usuário (validação obrigatória)
-- Seleção múltipla de gêneros favoritos (9 opções)
-- Campo para nota mínima (validação 0-10)
-- Botão para salvar preferências
-- Exibição das configurações salvas
+1. Após executar \
+px expo start\:
+   - Pressione \\ para abrir no emulador Android
+   - Pressione \i\ para abrir no simulador iOS
+   - Escaneie o QR Code com o app Expo Go
+
+
+
+2. Funcionalidades para testar:
+   - ✅ Busque por filmes digitando no campo de busca (mínimo 3 caracteres)
+   - ✅ Adicione filmes aos favoritos clicando no botão azul
+   - ✅ Visualize detalhes completos clicando em um card
+   - ✅ Filtre por tipo: Todos, Filme ou Série
+   - ✅ Configure preferências na aba Configurações
+   - ✅ Feche e reabra o app para verificar persistência dos favoritos
+
+
+
+## 📂 Estrutura do Projeto
+
+
+
+\\\
+movie-sprint1-complete/
+├── app/
+│   ├── (tabs)/
+│   │   ├── index.js          # Tela de sugestões com busca e API
+│   │   ├── favoritos.js      # Tela de favoritos com AsyncStorage
+│   │   ├── configuracoes.js  # Tela de configurações do usuário
+│   │   └── _layout.js        # Configuração das tabs de navegação
+│   └── details/
+│       └── [id].js           # Tela de detalhes dinâmica
+├── components/
+│   ├── MovieCard.js          # Componente de card de filme/série
+│   └── DetailsModal.js       # Modal com detalhes completos
+├── services/
+│   └── tmdbService.js        # Serviço de integração com API TMDB
+├── package.json              # Dependências do projeto
+└── README.md                 # Este arquivo
+\\\
+
+
+
+## 🎯 Requisitos Atendidos
+
+
+
+### ✅ Sprint 1 - Completa (100/100)
+- [x] Navegação entre telas com Expo Router - 30 pontos
+- [x] Protótipo visual funcional - 30 pontos  
+- [x] Formulário com manipulação de estado - 20 pontos
+- [x] AsyncStorage para persistência - 20 pontos
+
+
+
+### ✅ Sprint 2 - Completa (100/100)
+- [x] Integração com API TMDB - 40 pontos
+- [x] Protótipo funcional com dados reais - 20 pontos
+- [x] Arquitetura de código organizada - 20 pontos
+- [x] Vídeo de demonstração (máx 5min) - 20 pontos
+
+
+
+## 🎥 Vídeo de Demonstração
+
+
+
+[Link do vídeo no YouTube será adicionado aqui - máximo 5 minutos]
+
+
+
+**Conteúdo do vídeo:**
+- Demonstração da navegação entre telas
+- Busca em tempo real de filmes e séries
+- Adição e remoção de favoritos
+- Visualização de detalhes completos
 - Persistência de dados com AsyncStorage
+- Configurações de preferências
 
-### Tela de Detalhes
-- Visualização completa das informações do título
-- Header colorido com tipo e título
-- Sinopse detalhada
-- Card com informações de tipo e gênero
 
-## Conceitos Aplicados das Aulas
 
-### JavaScript e React
-- Arrow Functions
-- Destructuring
-- Array Methods (map, filter, find)
-- Hooks (useState, useEffect, useFocusEffect)
-- Componentes funcionais
-- Props e Export/Import
+## 🔑 Configuração da API
 
-### React Native
-- StyleSheet para estilização
-- Flexbox para layouts
-- FlatList para listas otimizadas
-- TextInput para formulários
-- TouchableOpacity para interações
-- Alert para feedbacks
-- ScrollView para conteúdo extenso
 
-### Navegação
-- Tab Navigator para menu principal
-- Stack Navigator para navegação em pilha
-- Parâmetros de navegação
-- Configuração de headers
 
-### Persistência
-- AsyncStorage para dados locais
-- Operações assíncronas (async/await)
-- JSON.stringify e JSON.parse
-- Tratamento de erros
+O projeto utiliza a API do TMDB (The Movie Database). A chave de API está configurada no arquivo \services/tmdbService.js\.
 
-## Dados Mockados
 
-O aplicativo utiliza um array de 10 títulos mockados contendo:
-- ID único
-- Título
-- Tipo (Filme/Série)
-- Gênero
-- Descrição
 
-Exemplos: Stranger Things, Oppenheimer, Matrix, The Crown, Breaking Bad, entre outros.
+## 📝 Observações Importantes
 
-## Validações Implementadas
 
-- Nome do usuário obrigatório
-- Nota mínima entre 0 e 10
-- Verificação de favoritos duplicados
-- Confirmação antes de remover favoritos
-- Tratamento de erros em operações de AsyncStorage
 
-## Melhorias Futuras (Próximas Sprints)
+- Todos os dados de filmes e séries são reais, vindos da API do TMDB
+- Favoritos são salvos localmente com AsyncStorage
+- O app funciona offline para visualizar favoritos salvos
+- Busca requer conexão com internet
+- Código organizado seguindo boas práticas React Native
+- Commits estruturados demonstrando evolução do projeto
 
-- Integração com API externa de filmes (TMDB ou similar)
-- Sistema de avaliações e comentários
-- Compartilhamento de favoritos
-- Modo escuro
-- Notificações de lançamentos
-- Filtros avançados por ano, classificação, etc.
 
-## Critérios de Avaliação Atendidos
 
-- [x] Navegação entre telas com Tab e Stack Navigation
-- [x] Protótipo visual completo e funcional
-- [x] Formulário com manipulação de estado usando useState
-- [x] Armazenamento local com AsyncStorage
-- [x] README.md documentado
-- [x] Código organizado e comentado
-- [x] Histórico Git organizado
-- [x] Entrega via GitHub Classroom
+## 🏆 Diferenciais Implementados
 
-## Licença
 
-Projeto desenvolvido para fins acadêmicos como parte do Challenge FIAP - Oracle 2025.
 
----
+- Modal de detalhes com informações completas (sinopse, avaliação, data de lançamento)
+- Busca em tempo real com debounce
+- Filtros por tipo (Filme/Série)
+- Indicadores de carregamento (loading)
+- Tratamento de erros com mensagens amigáveis
+- Pull-to-refresh para atualizar dados
+- Interface responsiva e intuitiva
 
-**Desenvolvido por:** | Matheus Mariotto | Felipe Anselmo | João Vinicius
-**Curso:** Análise e Desenvolvimento de Sistemas - FIAP  
-**Disciplina:** Mobile Application Development  
-**Professor:** Fernando Pinéo  
-**Sprint:** 1/4  
-**Data:** [Data da entrega]
+
+
+## 📄 Licença
+
+
+
+Projeto acadêmico desenvolvido para o Challenge Oracle - FIAP 2TDS 2025
