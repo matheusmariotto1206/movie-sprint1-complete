@@ -1,97 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, Text, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity } from 'react-native';
-import { useRouter } from 'expo-router';
+import { View, FlatList, Text, Alert, StyleSheet, StatusBar, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import MovieCard from '../../components/MovieCard';
+import DetailsModal from '../../components/DetailsModal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const MOCK_DATA = [
-  { 
-    id: 'm1', 
-    title: 'Stranger Things', 
-    type: 'Série', 
-    genre: 'Sci-Fi', 
-    description: 'Adolescentes enfrentam mistérios sobrenaturais em uma pequena cidade americana nos anos 80.' 
-  },
-  { 
-    id: 'm2', 
-    title: 'Oppenheimer', 
-    type: 'Filme', 
-    genre: 'Drama', 
-    description: 'A vida e dilemas do físico J. Robert Oppenheimer durante o desenvolvimento da bomba atômica.' 
-  },
-  { 
-    id: 'm3', 
-    title: 'Matrix', 
-    type: 'Filme', 
-    genre: 'Sci-Fi', 
-    description: 'Um hacker descobre a verdade sobre a realidade e seu papel na guerra contra seus controladores.' 
-  },
-  { 
-    id: 'm4', 
-    title: 'The Crown', 
-    type: 'Série', 
-    genre: 'Drama', 
-    description: 'Drama histórico sobre o reinado da Rainha Elizabeth II e a família real britânica.' 
-  },
-  { 
-    id: 'm5', 
-    title: 'The Office', 
-    type: 'Série', 
-    genre: 'Comédia', 
-    description: 'Mockumentary sobre o cotidiano hilário de funcionários de um escritório.' 
-  },
-  { 
-    id: 'm6', 
-    title: 'Parasita', 
-    type: 'Filme', 
-    genre: 'Thriller', 
-    description: 'Tensão social e reviravoltas inesperadas quando uma família pobre se infiltra na casa de ricos.' 
-  },
-  { 
-    id: 'm7', 
-    title: 'Breaking Bad', 
-    type: 'Série', 
-    genre: 'Crime', 
-    description: 'Professor de química com câncer transforma-se em fabricante de metanfetamina.' 
-  },
-  { 
-    id: 'm8', 
-    title: 'Amélie Poulain', 
-    type: 'Filme', 
-    genre: 'Romance', 
-    description: 'Uma jovem sonhadora e criativa decide mudar a vida das pessoas ao seu redor.' 
-  },
-  { 
-    id: 'm9', 
-    title: 'Dark', 
-    type: 'Série', 
-    genre: 'Sci-Fi', 
-    description: 'Mistérios e viagens no tempo conectam quatro famílias em uma pequena cidade alemã.' 
-  },
-  { 
-    id: 'm10', 
-    title: 'Inception', 
-    type: 'Filme', 
-    genre: 'Ação', 
-    description: 'Ladrão especializado em extrair segredos do subconsciente através dos sonhos.' 
-  },
-];
+import { getPopularMovies, getPopularTVShows, searchMovies, searchTVShows } from '../../services/tmdbService';
 
 export default function SuggestionsScreen() {
-  const router = useRouter();
-  const [movies] = useState(MOCK_DATA);
+  const [movies, setMovies] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('Todos');
-  const [filteredMovies, setFilteredMovies] = useState(MOCK_DATA);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  
+  // Estados para o Modal
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     loadFavorites();
+    loadMoviesFromAPI();
   }, []);
 
   useEffect(() => {
-    filterMovies();
-  }, [searchTerm, selectedType]);
+    if (searchTerm.trim().length >= 3) {
+      searchMoviesFromAPI();
+    } else if (searchTerm.trim().length === 0) {
+      loadMoviesFromAPI();
+    }
+  }, [searchTerm]);
+
+  useEffect(() => {
+    filterByType();
+  }, [selectedType, movies]);
 
   const loadFavorites = async () => {
     try {
@@ -102,22 +44,53 @@ export default function SuggestionsScreen() {
     }
   };
 
-  const filterMovies = () => {
-    let filtered = movies;
-
-    if (searchTerm.trim()) {
-      filtered = filtered.filter(movie => 
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        movie.genre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        movie.description.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+  const loadMoviesFromAPI = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [movieResults, tvResults] = await Promise.all([
+        getPopularMovies(1),
+        getPopularTVShows(1)
+      ]);
+      
+      const combined = [...movieResults, ...tvResults];
+      setMovies(combined);
+      setFilteredMovies(combined);
+    } catch (err) {
+      console.error('Erro ao carregar dados:', err);
+      setError('Erro ao carregar filmes e séries. Verifique sua conexão.');
+      Alert.alert('Erro', 'Não foi possível carregar os dados. Tente novamente.');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (selectedType !== 'Todos') {
-      filtered = filtered.filter(movie => movie.type === selectedType);
+  const searchMoviesFromAPI = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [movieResults, tvResults] = await Promise.all([
+        searchMovies(searchTerm),
+        searchTVShows(searchTerm)
+      ]);
+      
+      const combined = [...movieResults, ...tvResults];
+      setMovies(combined);
+      filterByType(combined);
+    } catch (err) {
+      console.error('Erro ao buscar:', err);
+      setError('Erro na busca. Tente novamente.');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    setFilteredMovies(filtered);
+  const filterByType = (data = movies) => {
+    if (selectedType === 'Todos') {
+      setFilteredMovies(data);
+    } else {
+      setFilteredMovies(data.filter(item => item.type === selectedType));
+    }
   };
 
   const addFavorite = async (item) => {
@@ -136,21 +109,35 @@ export default function SuggestionsScreen() {
     }
   };
 
+  const openDetails = (item) => {
+    setSelectedMovie(item);
+    setModalVisible(true);
+  };
+
+  const closeDetails = () => {
+    setModalVisible(false);
+    setSelectedMovie(null);
+  };
+
   const clearSearch = () => {
     setSearchTerm('');
     setSelectedType('Todos');
+    loadMoviesFromAPI();
   };
 
   const renderHeader = () => (
     <View style={styles.searchContainer}>
-      <Text style={styles.resultCount}>
-        {filteredMovies.length} de {movies.length} títulos disponíveis
-      </Text>
+      <View style={styles.headerInfo}>
+        <Text style={styles.resultCount}>
+          {filteredMovies.length} títulos {searchTerm ? 'encontrados' : 'disponíveis'}
+        </Text>
+        {loading && <ActivityIndicator size="small" color="#2196F3" />}
+      </View>
       
       <View style={styles.searchInputWrapper}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Buscar por título, gênero..."
+          placeholder="Buscar filmes ou séries (min. 3 caracteres)..."
           placeholderTextColor="#999"
           value={searchTerm}
           onChangeText={setSearchTerm}
@@ -191,6 +178,15 @@ export default function SuggestionsScreen() {
           </Text>
         </View>
       )}
+
+      {error && (
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>{error}</Text>
+          <TouchableOpacity onPress={loadMoviesFromAPI} style={styles.retryButton}>
+            <Text style={styles.retryButtonText}>Tentar novamente</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 
@@ -206,29 +202,42 @@ export default function SuggestionsScreen() {
           <MovieCard 
             item={item} 
             onAdd={() => addFavorite(item)} 
-            onPress={() => router.push({
-              pathname: '/details/[id]',
-              params: { id: item.id, item: JSON.stringify(item) }
-            })} 
+            onPress={() => openDetails(item)}
           />
         )}
         contentContainerStyle={styles.listContent}
         ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Text style={styles.emptyIcon}>🔍</Text>
-            <Text style={styles.emptyText}>
-              Nenhum resultado encontrado
-            </Text>
-            <Text style={styles.emptySubtext}>
-              Tente buscar por outro termo
-            </Text>
-            <TouchableOpacity onPress={clearSearch} style={styles.resetButton}>
-              <Text style={styles.resetButtonText}>Limpar Filtros</Text>
-            </TouchableOpacity>
-          </View>
+          loading ? (
+            <View style={styles.emptyContainer}>
+              <ActivityIndicator size="large" color="#2196F3" />
+              <Text style={styles.loadingText}>Carregando...</Text>
+            </View>
+          ) : (
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyIcon}>🔍</Text>
+              <Text style={styles.emptyText}>
+                Nenhum resultado encontrado
+              </Text>
+              <Text style={styles.emptySubtext}>
+                Tente buscar por outro termo
+              </Text>
+              <TouchableOpacity onPress={clearSearch} style={styles.resetButton}>
+                <Text style={styles.resetButtonText}>Limpar Filtros</Text>
+              </TouchableOpacity>
+            </View>
+          )
         }
         showsVerticalScrollIndicator={false}
         stickyHeaderIndices={[0]}
+        refreshing={loading}
+        onRefresh={loadMoviesFromAPI}
+      />
+
+      {/* Modal de Detalhes */}
+      <DetailsModal 
+        visible={modalVisible}
+        item={selectedMovie}
+        onClose={closeDetails}
       />
     </View>
   );
@@ -239,10 +248,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
+  headerInfo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
   resultCount: {
     fontSize: 13,
     color: '#666',
-    marginBottom: 12,
   },
   searchContainer: {
     backgroundColor: '#fff',
@@ -307,6 +321,29 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#1976d2',
   },
+  errorContainer: {
+    marginTop: 12,
+    padding: 12,
+    backgroundColor: '#ffebee',
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  errorText: {
+    color: '#c62828',
+    fontSize: 13,
+    marginBottom: 8,
+  },
+  retryButton: {
+    backgroundColor: '#c62828',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+  },
+  retryButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: '600',
+  },
   listContent: {
     paddingHorizontal: 16,
   },
@@ -314,6 +351,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 60,
+  },
+  loadingText: {
+    marginTop: 12,
+    color: '#666',
+    fontSize: 14,
   },
   emptyIcon: {
     fontSize: 64,
