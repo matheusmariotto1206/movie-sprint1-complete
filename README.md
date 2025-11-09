@@ -59,7 +59,7 @@ No vídeo demonstramos:
 
 | **Todos os Conteúdos** | **Filtro: Filmes** | **Filtro: Séries** |
 |:---:|:---:|:---:|
-| ![Tela Inicial - Todos](assets/screenshots/tela-inicial.png) | ![Tela Inicial - Filmes](assets/screenshots/tela-inicial_filmes.png) | ![Tela Inicial - Séries](assets/screenshots/tela-inicial_Series.png) |
+| ![Tela Inicial - Todos](assets/screenshots/tela-inicial.png) | ![Tela Inicial - Filmes](assets/screenshots/tela-inicial_filmes.png) | ![Tela Inicial - Séries](assets/screenshots/tela_inicial_Series.png) |
 
 *Busca em tempo real com filtros dinâmicos por tipo (Todos/Filmes/Séries) e catálogo sempre atualizado via TMDB API*
 
