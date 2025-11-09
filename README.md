@@ -59,7 +59,7 @@ No vídeo demonstramos:
 
 | **Todos os Conteúdos** | **Filtro: Filmes** | **Filtro: Séries** |
 |:---:|:---:|:---:|
-| ![Tela Inicial - Todos](assets/screenshots/tela-inicial.png) | ![Tela Inicial - Filmes](assets/screenshots/tela-inicial_filmes.png) | ![Tela Inicial - Séries](assets/screenshots/tela_inicial_Series.png) |
+| <img src="screenshots/01-tela-inicial-todos.png" width="250"/> | <img src="screenshots/02-tela-inicial-filmes.png" width="250"/> | <img src="screenshots/03-tela-inicial-series.png" width="250"/> |
 
 *Busca em tempo real com filtros dinâmicos por tipo (Todos/Filmes/Séries) e catálogo sempre atualizado via TMDB API*
 
@@ -73,7 +73,7 @@ No vídeo demonstramos:
 
 | **Lista de Favoritos** | **Adicionando aos Favoritos** |
 |:---:|:---:|
-| ![Favoritos](assets/screenshots/tela_inicial_Favoritos.png) | ![Adicionar Favorito](assets/screenshots/tela_inicial_Adicionado_Playlist.png) |
+| <img src="screenshots/04-tela-favoritos.png" width="250"/> | <img src="screenshots/08-confirmacao-favorito.png" width="250"/> |
 
 *Gerenciamento completo dos seus favoritos com opções de avaliar, adicionar à playlist e remover com um toque*
 
@@ -87,7 +87,7 @@ No vídeo demonstramos:
 
 | **Lista de Reviews** | **Editar Avaliação** |
 |:---:|:---:|
-| ![Reviews](assets/screenshots/Tela_Avaliacoes.png) | ![Editar Review](assets/screenshots/tela_inicial_Adicionado_Playlist.png) |
+| <img src="screenshots/06-tela-avaliacoes.png" width="250"/> | <img src="screenshots/07-tela-editar-avaliacao.png" width="250"/> |
 
 *Sistema completo de avaliações: 1-5 estrelas, comentários personalizados, estatísticas automáticas e ordenação*
 
@@ -101,13 +101,13 @@ No vídeo demonstramos:
 
 | **Minhas Playlists** | **Criar Playlist** | **Adicionar à Playlist** |
 |:---:|:---:|:---:|
-| ![Playlists](assets/screenshots/Tela_Minhas_Playlist.png) | ![Criar Playlist](assets/screenshots/Tela_criando_Playlist.png) | ![Add Playlist](assets/screenshots/Tela_Adicionar_Playlist.png) |
+| <img src="screenshots/09-minhas-playlists.png" width="240"/> | <img src="screenshots/10-criar-playlist.png" width="240"/> | <img src="screenshots/11-adicionar-playlist.png" width="240"/> |
 
 **Playlists Criadas e Gerenciadas**
 
 | **Lista Completa** | **Playlist Expandida** |
 |:---:|:---:|
-| ![Todas Playlists](assets/screenshots/Tela_playlist_todas.png) | ![Playlist com Itens](assets/screenshots/Tela_Criado.png) |
+| <img src="screenshots/12-todas-playlists.png" width="250"/> | <img src="screenshots/13-playlist-expandida.png" width="250"/> |
 
 *Crie listas temáticas ilimitadas com nome, descrição e emoji personalizado. Inclui 4 playlists padrão: Ação, Comédia, Sci-Fi e Terror*
 
@@ -119,13 +119,9 @@ No vídeo demonstramos:
 
 <div align="center">
 
-| **Configurações Gerais** | **Perfil Salvo** |
-|:---:|:---:|
-| ![Configurações](assets/screenshots/Tela_Configuração.png) | ![Perfil OK](assets/screenshots/Tela_configuracao_ok.png) |
-
-**Salvando Preferências**
-
-![Salvando Perfil](assets/screenshots/Tela_configuracao_salva.png)
+| **Configurações Gerais** | **Perfil Salvo** | **Confirmação** |
+|:---:|:---:|:---:|
+| <img src="screenshots/14-configuracoes.png" width="230"/> | <img src="screenshots/15-configuracoes-salvas.png" width="230"/> | <img src="screenshots/16-confirmacao-salva.png" width="230"/> |
 
 *Dashboard completo com estatísticas do seu perfil: favoritos, gêneros preferidos e tempo total de conteúdo*
 
@@ -292,6 +288,24 @@ movie-sprint1-complete/
 ├── services/
 │   └── tmdbService.js            # Integração TMDB API
 │
+├── screenshots/                  # Screenshots organizados
+│   ├── 01-tela-inicial-todos.png
+│   ├── 02-tela-inicial-filmes.png
+│   ├── 03-tela-inicial-series.png
+│   ├── 04-tela-favoritos.png
+│   ├── 05-tela-adicionando-favorito.png
+│   ├── 06-tela-avaliacoes.png
+│   ├── 07-tela-editar-avaliacao.png
+│   ├── 08-confirmacao-favorito.png
+│   ├── 09-minhas-playlists.png
+│   ├── 10-criar-playlist.png
+│   ├── 11-adicionar-playlist.png
+│   ├── 12-todas-playlists.png
+│   ├── 13-playlist-expandida.png
+│   ├── 14-configuracoes.png
+│   ├── 15-configuracoes-salvas.png
+│   └── 16-confirmacao-salva.png
+│
 ├── assets/                       # Recursos estáticos
 ├── package.json                  # Dependências
 ├── app.json                      # Configurações Expo
@@ -438,6 +452,7 @@ Estrutura: {
 ⚡ Integrações de API: 8 endpoints TMDB
 💾 Tipos de persistência: 4
 🧪 Funcionalidades testadas: 100%
+📸 Screenshots documentados: 16
 ```
 
 ### Funcionalidades
@@ -510,6 +525,7 @@ Estrutura: {
 ✅ Design de interfaces responsivas  
 ✅ Debugging e resolução de problemas complexos  
 ✅ Trabalho em equipe e versionamento Git  
+✅ Documentação técnica completa
 
 ---
 
@@ -574,6 +590,7 @@ Agradecimentos especiais a:
 🔄 ATUALIZADO: Dashboard de estatísticas
 🐛 CORRIGIDO: Performance em listas grandes
 🐛 CORRIGIDO: Sincronização AsyncStorage
+📸 DOCUMENTADO: 16 screenshots padronizados
 ```
 
 ### v1.0 - Outubro 2025
@@ -599,5 +616,8 @@ Agradecimentos especiais a:
 **Última atualização**: Novembro 2025  
 **Versão**: 2.0 (Release Final)  
 **Status**: ✅ Pronto para Produção
+
+[![GitHub](https://img.shields.io/badge/GitHub-CineFinder-181717?style=flat&logo=github)](https://github.com/matheusmariotto1206/movie-sprint1-complete)
+[![FIAP](https://img.shields.io/badge/FIAP-Challenge%202025-ED145B?style=flat)](https://www.fiap.com.br/)
 
 </div>
