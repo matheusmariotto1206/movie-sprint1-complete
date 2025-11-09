@@ -1,4 +1,4 @@
-﻿# 🎬 CineFinder v2.0 - Plataforma Completa de Filmes e Séries
+# 🎬 CineFinder v2.0 - Plataforma Completa de Filmes e Séries
 
 > Descubra, avalie e organize seu universo cinematográfico  
 > **Challenge Oracle 2TDS - FIAP 2025**
@@ -30,6 +30,106 @@ Todos nós já passamos pela situação: você tem tempo livre, quer assistir al
 - Avaliar o que já viu para lembrar depois
 - Organizar em listas temáticas
 - Descobrir novos títulos baseado em suas preferências
+
+---
+
+## 📹 Demonstração em Vídeo
+
+### 🎥 Vídeo Completo
+
+> **[▶️ Assista ao Vídeo de Demonstração no YouTube](https://youtu.be/ZQMHXXmSVME)**
+
+No vídeo demonstramos:
+- ✅ Busca inteligente e filtros
+- ✅ Sistema de favoritos
+- ✅ Avaliações com estrelas e comentários
+- ✅ Criação e gerenciamento de playlists
+- ✅ Sincronização entre telas
+- ✅ Persistência de dados
+
+**Duração:** 5 minutos | **Qualidade:** 1080p
+
+---
+
+## 📸 Screenshots do Aplicativo
+
+### 🏠 Tela Inicial - Busca e Filtros
+
+<div align="center">
+
+| **Todos os Conteúdos** | **Filtro: Filmes** | **Filtro: Séries** |
+|:---:|:---:|:---:|
+| ![Tela Inicial - Todos](assets/screenshots/tela-inicial.png) | ![Tela Inicial - Filmes](assets/screenshots/tela-inicial_filmes.png) | ![Tela Inicial - Séries](assets/screenshots/tela-inicial_Series.png) |
+
+*Busca em tempo real com filtros dinâmicos por tipo (Todos/Filmes/Séries) e catálogo sempre atualizado via TMDB API*
+
+</div>
+
+---
+
+### ❤️ Sistema de Favoritos
+
+<div align="center">
+
+| **Lista de Favoritos** | **Adicionando aos Favoritos** |
+|:---:|:---:|
+| ![Favoritos](assets/screenshots/tela_inicial_Favoritos.png) | ![Adicionar Favorito](assets/screenshots/tela_inicial_Adicionado_Playlist.png) |
+
+*Gerenciamento completo dos seus favoritos com opções de avaliar, adicionar à playlist e remover com um toque*
+
+</div>
+
+---
+
+### ⭐ Sistema de Avaliações Completo
+
+<div align="center">
+
+| **Lista de Reviews** | **Editar Avaliação** |
+|:---:|:---:|
+| ![Reviews](assets/screenshots/Tela_Avaliacoes.png) | ![Editar Review](assets/screenshots/tela_inicial_Adicionado_Playlist.png) |
+
+*Sistema completo de avaliações: 1-5 estrelas, comentários personalizados, estatísticas automáticas e ordenação*
+
+</div>
+
+---
+
+### 📁 Playlists Personalizadas
+
+<div align="center">
+
+| **Minhas Playlists** | **Criar Playlist** | **Adicionar à Playlist** |
+|:---:|:---:|:---:|
+| ![Playlists](assets/screenshots/Tela_Minhas_Playlist.png) | ![Criar Playlist](assets/screenshots/Tela_criando_Playlist.png) | ![Add Playlist](assets/screenshots/Tela_Adicionar_Playlist.png) |
+
+**Playlists Criadas e Gerenciadas**
+
+| **Lista Completa** | **Playlist Expandida** |
+|:---:|:---:|
+| ![Todas Playlists](assets/screenshots/Tela_playlist_todas.png) | ![Playlist com Itens](assets/screenshots/Tela_Criado.png) |
+
+*Crie listas temáticas ilimitadas com nome, descrição e emoji personalizado. Inclui 4 playlists padrão: Ação, Comédia, Sci-Fi e Terror*
+
+</div>
+
+---
+
+### ⚙️ Perfil e Configurações
+
+<div align="center">
+
+| **Configurações Gerais** | **Perfil Salvo** |
+|:---:|:---:|
+| ![Configurações](assets/screenshots/Tela_Configuração.png) | ![Perfil OK](assets/screenshots/Tela_configuracao_ok.png) |
+
+**Salvando Preferências**
+
+![Salvando Perfil](assets/screenshots/Tela_configuracao_salva.png)
+
+*Dashboard completo com estatísticas do seu perfil: favoritos, gêneros preferidos e tempo total de conteúdo*
+
+</div>
 
 ---
 
@@ -131,7 +231,7 @@ npm --version     # ou yarn --version
 
 ```bash
 # 1. Clonar repositório
-git clone [URL_DO_REPOSITORIO]
+git clone https://github.com/matheusmariotto1206/movie-sprint1-complete.git
 cd movie-sprint1-complete
 
 # 2. Instalar dependências
@@ -218,7 +318,7 @@ movie-sprint1-complete/
 | Integração API real | 40 | ✅ | TMDB API v3 completa |
 | Protótipo funcional | 20 | ✅ | Todas features operacionais |
 | Arquitetura de código | 20 | ✅ | Estrutura modular escalável |
-| Vídeo demonstração | 20 | ✅ | [Link do YouTube] |
+| Vídeo demonstração | 20 | ✅ | Link disponível acima |
 
 ### ✅ Escopo Original - Sistema Completo (100%)
 
@@ -422,23 +522,6 @@ Estrutura: {
 | Modal sem animação suave | Muito baixo | Adicionar react-native-reanimated |
 
 **Status**: Nenhum bug crítico identificado ✅
-
----
-
-## 📹 Material de Apresentação
-
-### Vídeo Demonstrativo
-> [🎥 Link do YouTube será adicionado aqui]
-
-**Conteúdo do vídeo** (5 minutos):
-1. Visão geral do app (30s)
-2. Sistema de busca e favoritos (1min)
-3. Avaliações completas (1.5min)
-4. Playlists personalizadas (1.5min)
-5. Sincronização e persistência (30s)
-
-### Screenshots
-> Capturas de tela serão adicionadas na entrega final
 
 ---
 
