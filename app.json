@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "CineFinder",
+    "slug": "cinefinder",
+    "version": "1.0.0",
+    "scheme": "cinefinder",
+    "orientation": "portrait",
+    "platforms": ["ios", "android"],
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0f0f0f"
+    },
+    "android": {
+      "package": "com.fiap.cinefinder",
+      "versionCode": 1,
+      "permissions": ["POST_NOTIFICATIONS"],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0f0f0f"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.fiap.cinefinder",
+      "buildNumber": "1"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      "expo-asset",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24
+          }
+        }
+      ],
+      "expo-notifications"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ecc6c764-c9ea-4467-aada-a3bd2e5b5d27"
+      }
+    },
+    "owner": "matheus.mariotto"
+  }
+}
