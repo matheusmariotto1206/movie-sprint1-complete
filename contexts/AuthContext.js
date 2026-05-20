@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { authService } from '../services/authService';
+import { clearFavoriteListCache } from '../services/favoriteService';
 
 const AuthContext = createContext({
   user: null,
@@ -71,6 +72,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
+    clearFavoriteListCache();
     setUser(null);
     await AsyncStorage.removeItem('@user');
   };

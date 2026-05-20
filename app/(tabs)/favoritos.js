@@ -12,13 +12,22 @@ export default function FavoritosScreen() {
   const styles = useMemo(() => createStyles(colors), [colors]);
   const router = useRouter();
   const { user } = useAuth();
-  const { data: favorites, isLoading } = useFavorites(user?.id);
+  const { data: favorites, isLoading } = useFavorites(user?.id, user?.name);
   const removeFavorite = useRemoveFavorite();
 
   const handleRemove = (movie) => {
     Alert.alert('Remover dos favoritos?', getMovieTitle(movie), [
       { text: 'Cancelar', style: 'cancel' },
-      { text: 'Remover', style: 'destructive', onPress: () => removeFavorite.mutate({ userId: user.id, movieId: movie.id }) },
+      {
+        text: 'Remover',
+        style: 'destructive',
+        onPress: () =>
+          removeFavorite.mutate({
+            userId: user.id,
+            userName: user.name,
+            movieId: movie.id,
+          }),
+      },
     ]);
   };
 

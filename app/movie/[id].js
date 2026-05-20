@@ -17,7 +17,7 @@ export default function MovieDetailScreen() {
   const movieId = Number(id);
 
   const { data: movie, isLoading, error } = useMovie(movieId);
-  const { data: favorites } = useFavorites(user?.id);
+  const { data: favorites } = useFavorites(user?.id, user?.name);
   const addFavorite = useAddFavorite();
   const removeFavorite = useRemoveFavorite();
 
@@ -34,9 +34,9 @@ export default function MovieDetailScreen() {
     const movieTitle = getMovieTitle(movie);
 
     if (isFavorite) {
-      removeFavorite.mutate({ userId: user.id, movieId });
+      removeFavorite.mutate({ userId: user.id, userName: user.name, movieId });
     } else {
-      addFavorite.mutate({ userId: user.id, movieId, movieTitle });
+      addFavorite.mutate({ userId: user.id, userName: user.name, movieId, movieTitle });
     }
   };
 

@@ -14,7 +14,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const { user } = useAuth();
   const { data: movies, isLoading, error, refetch } = useMovies();
-  const { data: favorites } = useFavorites(user?.id);
+  const { data: favorites } = useFavorites(user?.id, user?.name);
   const addFavorite = useAddFavorite();
   const removeFavorite = useRemoveFavorite();
 
@@ -29,10 +29,13 @@ export default function HomeScreen() {
     const movieTitle = getMovieTitle(movie);
 
     if (isFavorite(movieId)) {
-      removeFavorite.mutate({ userId: user.id, movieId }, { onError: (err) => Alert.alert('Erro', err.message) });
+      removeFavorite.mutate(
+        { userId: user.id, userName: user.name, movieId },
+        { onError: (err) => Alert.alert('Erro', err.message) }
+      );
     } else {
       addFavorite.mutate(
-        { userId: user.id, movieId, movieTitle },
+        { userId: user.id, userName: user.name, movieId, movieTitle },
         { onError: (err) => Alert.alert('Erro', err.message) }
       );
     }
