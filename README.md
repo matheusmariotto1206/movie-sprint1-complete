@@ -140,13 +140,13 @@ eas build -p android --profile preview
 4. Adicione o e-mail do professor como **tester**
 5. Envie o convite de teste
 
-Documente no README o link do release ou o grupo de testadores.
+**Versão publicada:** 1.0.1 (2) — inclui correção de remover favoritos e HTTP no APK.
 
-## Vídeo da demonstração (Sprint 4)
+**Testers:** `proffernando.abreu@fiap.com.br` (convite enviado via App Distribution).
 
-> ⚠️ **Substitua pelo link real do YouTube antes de entregar.**
+## Vídeo da demonstração (Sprint 3 e 4)
 
-**Link do vídeo:** https://www.youtube.com/watch?v=COLOQUE_SEU_VIDEO_AQUI
+**Link do vídeo:** https://youtu.be/0huEELuYzKY
 
 Roteiro narrado (máx. 5 min):
 

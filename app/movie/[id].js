@@ -21,7 +21,7 @@ export default function MovieDetailScreen() {
   const addFavorite = useAddFavorite();
   const removeFavorite = useRemoveFavorite();
 
-  const isFavorite = favorites?.some((f) => f.id === movieId);
+  const isFavorite = favorites?.some((f) => Number(f.id) === Number(movieId));
 
   const toggleFavorite = () => {
     if (!user?.id) {

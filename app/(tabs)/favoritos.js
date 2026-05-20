@@ -22,11 +22,10 @@ export default function FavoritosScreen() {
         text: 'Remover',
         style: 'destructive',
         onPress: () =>
-          removeFavorite.mutate({
-            userId: user.id,
-            userName: user.name,
-            movieId: movie.id,
-          }),
+          removeFavorite.mutate(
+            { userId: user.id, userName: user.name, movieId: movie.id },
+            { onError: (err) => Alert.alert('Erro', err.message) }
+          ),
       },
     ]);
   };

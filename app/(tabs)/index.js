@@ -18,7 +18,8 @@ export default function HomeScreen() {
   const addFavorite = useAddFavorite();
   const removeFavorite = useRemoveFavorite();
 
-  const isFavorite = (movieId) => favorites?.some((f) => f.id === movieId);
+  const isFavorite = (movieId) =>
+    favorites?.some((f) => Number(f.id) === Number(movieId));
 
   const toggleFavorite = (movieId) => {
     if (!user?.id) {

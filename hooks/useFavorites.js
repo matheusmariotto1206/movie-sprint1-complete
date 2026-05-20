@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { favoriteService } from '../services/favoriteService';
+import { favoriteService, clearFavoriteListCache } from '../services/favoriteService';
 import { notifyFavoriteAdded } from '../services/notificationService';
 
 export const useFavorites = (userId, userName) => {
@@ -28,5 +28,12 @@ export const useRemoveFavorite = () => {
     mutationFn: ({ userId, userName, movieId }) =>
       favoriteService.remove(userId, userName, movieId),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['favorites'] }),
+    onError: (err, { userId }) => {
+      const msg = String(err?.message || '');
+      if (msg.includes('404') || msg.includes('NoSuchElement') || msg.includes('não está')) {
+        clearFavoriteListCache(userId);
+        queryClient.invalidateQueries({ queryKey: ['favorites'] });
+      }
+    },
   });
 };
